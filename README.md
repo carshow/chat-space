@@ -37,3 +37,15 @@
 - has_many :messages
 - has_many :members
 
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|member_id|integer|null: false, foreign_key: true|
+|message_id|integer|null: false, foreign_key: true|
+
+- has_many :messages
+- has_many :members
+
+
+
