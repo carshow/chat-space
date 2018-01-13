@@ -24,3 +24,16 @@
 ### Association
 - has_many :groups,
 - has_many :users
+
+
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|index: true, null: false, unique: true|
+|mail|string|null: false|
+
+- has_many :groups, through: members
+- has_many :messages
+- has_many :members
+
