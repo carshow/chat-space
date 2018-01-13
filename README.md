@@ -16,14 +16,14 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :groups,
-- has_many :users
+- belongs_to :group,
+- belongs_to :user
 
 
 ## usersテーブル
@@ -33,6 +33,7 @@
 |name|string|index: true, null: false, unique: true|
 |mail|string|null: false|
 
+### Association
 - has_many :groups, through: members
 - has_many :messages
 - has_many :members
@@ -41,11 +42,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|member_id|integer|null: false, foreign_key: true|
-|message_id|integer|null: false, foreign_key: true|
+|name|string|index: true, null: false|
 
+### Association
 - has_many :messages
 - has_many :members
+- has_many :users, through: members
 
 
 
