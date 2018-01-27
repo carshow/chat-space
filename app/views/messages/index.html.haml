@@ -20,3 +20,16 @@
           メッセージ
           /グループリスト仮置きここまで
 
+.chat-main
+  .chat-main__header
+    .chat-main__header-group.clearfix
+      .chat-main__header-group-name
+        開いているグループ名
+    %a{ :class => 'chat-main__header--group-edit-btn', :href => '/'}
+      edit
+    .chat-main__header-members
+      MEMBER:
+      %i
+        メンバー名
+
+
