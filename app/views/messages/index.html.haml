@@ -31,5 +31,17 @@
       MEMBER:
       %i
         メンバー名
+  .chat-main__body
+    .chat-main__body--messages-list
+      /チャットメッセージ仮置きここから
+      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
+        .chat-main__message-name
+          チャット名
+        .chat-main__message-time
+        メッセージ投稿時間
+        .chat-main__message-body
+          チャット
+          %img{ :class => 'chat-main__message-body-image', :src => '/'}
+          /チャットメッセージ仮置きここまで
 
 
