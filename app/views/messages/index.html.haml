@@ -1,2 +1,22 @@
-%h1 Messages#index
-%p Find me in app/views/messages/index.html.haml
+.chat-side
+  .chat-side__user
+    .chat-side__user-content
+      .chat-side__user-name
+        sample
+        / ユーザーネーム仮置き
+      %a{ :href => '/', :class => 'chat-side__user-new-group'}
+        %i.fa.fa-pencil-square-o
+      %a{ :href => '/', :class => 'chat-side__user-edit-user'}
+        %i.fa.fa-cog
+          / href仮置き
+  .chat-side__groups
+    .chat-side__groups_list
+      /グループリスト仮置きここから
+      %a{ :href => '/', :class => 'chat-side__group'}
+        .chat-side__group
+          .chat-side__group-name
+            グループ名
+        .chat-side__group-message
+          メッセージ
+          /グループリスト仮置きここまで
+
