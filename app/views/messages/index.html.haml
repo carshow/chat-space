@@ -1,3 +1,4 @@
+.notification
 .chat-side
   .chat-side__user
     .chat-side__user-content
@@ -11,14 +12,20 @@
           / href仮置き
   .chat-side__groups
     .chat-side__groups_list
-      /グループリスト仮置きここから
-      %a{ :href => '/', :class => 'chat-side__group'}
+      /グループリスト仮置き
+      %a{ :href => '/'}
         .chat-side__group
           .chat-side__group-name
             グループ名
-        .chat-side__group-message
-          メッセージ
-          /グループリスト仮置きここまで
+          .chat-side__group-message
+            メッセージ
+      %a{ :href => '/'}
+        .chat-side__group
+          .chat-side__group-name
+            グループ名
+          .chat-side__group-message
+            メッセージ
+
 
 .chat-main
   .chat-main__header
