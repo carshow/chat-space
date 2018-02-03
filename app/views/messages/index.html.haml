@@ -25,33 +25,7 @@
       %i
         メンバー名
   .chat-main__body
-    .chat-main__body--messages-list
-      /チャットメッセージ仮置きここから
-      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-        .chat-main__message-name
-          チャット名
-        .chat-main__message-time
-          メッセージ投稿時間
-        .chat-main__message-body
-          チャット
-          = image_tag "", :class => 'chat-main__message-body-image'
-      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-        .chat-main__message-name
-          チャット名
-        .chat-main__message-time
-          メッセージ投稿時間
-        .chat-main__message-body
-          チャット
-          = image_tag "", :class => 'chat-main__message-body-image'
-      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-        .chat-main__message-name
-          チャット名
-        .chat-main__message-time
-          メッセージ投稿時間
-        .chat-main__message-body
-          チャット
-          = image_tag "", :class => 'chat-main__message-body-image'
-          /チャットメッセージ仮置きここまで
+    = render partial: "messages-list"
 
   .chat-main__footer
     = form_tag "/", method: :post , :id => "new_message", :class => "chat-main__footer-form" do
