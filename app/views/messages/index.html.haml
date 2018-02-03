@@ -1,13 +1,11 @@
-.notification
 .chat-side
   .chat-side__user
     .chat-side__user-content
       .chat-side__user-name
-        sample
-        / ユーザーネーム仮置き
+        = current_user.name
       = link_to "/", :class => "chat-side__user-new-group" do
         %i.fa.fa-pencil-square-o
-      = link_to "/", :class => "chat-side__user-edit-user" do
+      = link_to edit_user_path, :class => "chat-side__user-edit-user" do
         %i.fa.fa-cog
           / href仮置き
   .chat-side__groups
