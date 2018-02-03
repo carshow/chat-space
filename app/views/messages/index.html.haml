@@ -1,0 +1,38 @@
+.notification
+.chat-side
+  .chat-side__user
+    .chat-side__user-content
+      .chat-side__user-name
+        sample
+        / ユーザーネーム仮置き
+      = link_to "/", :class => "chat-side__user-new-group" do
+        %i.fa.fa-pencil-square-o
+      = link_to "/", :class => "chat-side__user-edit-user" do
+        %i.fa.fa-cog
+          / href仮置き
+  .chat-side__groups
+    = render partial: "chat-side__groups"
+
+.chat-main
+  .chat-main__header
+    .chat-main__header-group.clearfix
+      .chat-main__header-group-name
+        開いているグループ名
+      = link_to '/', { :class => 'chat-main__header--group-edit-btn'} do
+        edit
+    .chat-main__header-members
+      MEMBER:
+      %i
+        メンバー名
+  .chat-main__body
+    = render partial: "messages-list"
+
+  .chat-main__footer
+    = form_tag "/", method: :post , :id => "new_message", :class => "chat-main__footer-form" do
+      .chat-main__footer-body
+        %input#message_body.message{:name => "text", :placeholder => "type a message", :type => "text"}
+        %label.chat-file{:for => "message_image"}
+          %input#message_image.image{:name => "image", :type => "file"}
+          %i.fa.fa-image
+      %input.submit{:type => "submit", :value => "Send"}
+
