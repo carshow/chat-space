@@ -5,21 +5,21 @@
       .chat-side__user-name
         sample
         / ユーザーネーム仮置き
-      %a{ :href => '/', :class => 'chat-side__user-new-group'}
+      = link_to "/", :class => "chat-side__user-new-group" do
         %i.fa.fa-pencil-square-o
-      %a{ :href => '/', :class => 'chat-side__user-edit-user'}
+      = link_to "/", :class => "chat-side__user-edit-user" do
         %i.fa.fa-cog
           / href仮置き
   .chat-side__groups
     .chat-side__groups_list
       /グループリスト仮置き
-      %a{ :href => '/'}
+      = link_to '/' do
         .chat-side__group
           .chat-side__group-name
             グループ名
           .chat-side__group-message
             メッセージ
-      %a{ :href => '/'}
+      = link_to '/' do
         .chat-side__group
           .chat-side__group-name
             グループ名
@@ -32,8 +32,8 @@
     .chat-main__header-group.clearfix
       .chat-main__header-group-name
         開いているグループ名
-    %a{ :class => 'chat-main__header--group-edit-btn', :href => '/'}
-      edit
+      = link_to '/', { :class => 'chat-main__header--group-edit-btn'} do
+        edit
     .chat-main__header-members
       MEMBER:
       %i
@@ -45,19 +45,34 @@
         .chat-main__message-name
           チャット名
         .chat-main__message-time
-        メッセージ投稿時間
+          メッセージ投稿時間
         .chat-main__message-body
           チャット
-          %img{ :class => 'chat-main__message-body-image', :src => '/'}
+          = image_tag "", :class => 'chat-main__message-body-image'
+      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
+        .chat-main__message-name
+          チャット名
+        .chat-main__message-time
+          メッセージ投稿時間
+        .chat-main__message-body
+          チャット
+          = image_tag "", :class => 'chat-main__message-body-image'
+      %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
+        .chat-main__message-name
+          チャット名
+        .chat-main__message-time
+          メッセージ投稿時間
+        .chat-main__message-body
+          チャット
+          = image_tag "", :class => 'chat-main__message-body-image'
           /チャットメッセージ仮置きここまで
+
   .chat-main__footer
-    %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/", :enctype => "multipart/form-data", :method => "post"}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-      %input{:name => "authenticity_token", :type => "hidden", :value => "/"}/
+    = form_tag "/", method: :post , :id => "new_message", :class => "chat-main__footer-form" do
       .chat-main__footer-body
-        %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text"}/
+        %input#message_body.message{:name => "text", :placeholder => "type a message", :type => "text"}
         %label.chat-file{:for => "message_image"}
-          %input#message_image.image{:name => "message[image]", :type => "file"}/
+          %input#message_image.image{:name => "image", :type => "file"}
           %i.fa.fa-image
-      %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+      %input.submit{:type => "submit", :value => "Send"}
 
