@@ -11,21 +11,7 @@
         %i.fa.fa-cog
           / href仮置き
   .chat-side__groups
-    .chat-side__groups_list
-      /グループリスト仮置き
-      = link_to '/' do
-        .chat-side__group
-          .chat-side__group-name
-            グループ名
-          .chat-side__group-message
-            メッセージ
-      = link_to '/' do
-        .chat-side__group
-          .chat-side__group-name
-            グループ名
-          .chat-side__group-message
-            メッセージ
-
+    = render partial: "chat-side__groups"
 
 .chat-main
   .chat-main__header
