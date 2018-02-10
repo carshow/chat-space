@@ -26,11 +26,12 @@
     = render partial: "messages-list"
 
   .chat-main__footer
-    = form_tag "/", method: :post , :id => "new_message", :class => "chat-main__footer-form" do
+    = form_for [@group, @message] , html:{ class: 'chat-main__footer-form'} do |f|
       .chat-main__footer-body
-        %input#message_body.message{:name => "text", :placeholder => "type a message", :type => "text"}
-        %label.chat-file{:for => "message_image"}
-          %input#message_image.image{:name => "image", :type => "file"}
+        = f.text_field :body, class: 'message', placeholder: "type a message"
+        = f.label :image, class: 'chat-file' do
+          = f.file_field :image, class: 'image'
           %i.fa.fa-image
-      %input.submit{:type => "submit", :value => "Send"}
+      = f.submit 'Send' ,class: 'submit'
+
 

@@ -156,20 +156,20 @@ a{
     border: none;
   }
 }
-
-.chat-main__footer-form{
-  margin: 0 40px;
-  position: relative;
-}
-.chat-main__footer-body{
-  position: relative;
-  .message{
+ .message{
     height: 50px;
     width: calc( 100% - 130px );
     padding: 0px 10px;
     margin: 20px 0;
     border: none;
   }
+.chat-main__footer-form{
+  margin: 0 40px;
+  position: relative;
+}
+.chat-main__footer-body{
+  position: relative;
+
   .chat-file{
     height: 50px;
     width: 40px;
