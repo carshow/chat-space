@@ -3,11 +3,10 @@
     .chat-side__user-content
       .chat-side__user-name
         = current_user.name
-      = link_to "/", :class => "chat-side__user-new-group" do
+      = link_to new_group_path, :class => "chat-side__user-new-group" do
         %i.fa.fa-pencil-square-o
       = link_to edit_user_path, :class => "chat-side__user-edit-user" do
         %i.fa.fa-cog
-          / href仮置き
   .chat-side__groups
     = render partial: "chat-side__groups"
 
