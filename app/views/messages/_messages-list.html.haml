@@ -1,27 +1,13 @@
 .chat-main__body--messages-list
   /チャットメッセージ仮置きここから
-  %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-    .chat-main__message-name
-      チャット名
-    .chat-main__message-time
-      メッセージ投稿時間
-    .chat-main__message-body
-      チャット
-      = image_tag "", :class => 'chat-main__message-body-image'
-  %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-    .chat-main__message-name
-      チャット名
-    .chat-main__message-time
-      メッセージ投稿時間
-    .chat-main__message-body
-      チャット
-      = image_tag "", :class => 'chat-main__message-body-image'
-  %div{ :class => 'chat-main__message clearfix', :data-id => '/'}
-    .chat-main__message-name
-      チャット名
-    .chat-main__message-time
-      メッセージ投稿時間
-    .chat-main__message-body
-      チャット
-      = image_tag "", :class => 'chat-main__message-body-image'
-      /チャットメッセージ仮置きここまで
+  - @messages.each do |message|
+    %div{ :class => 'chat-main__message clearfix'}
+      .chat-main__message-name
+        = message.user.name
+      .chat-main__message-time
+        = message.created_at
+      .chat-main__message-body
+        - if message.body.present?
+          = message.body
+        - if message.image.present?
+          = image_tag message.image, :class => 'chat-main__message-body-image'
