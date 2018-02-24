@@ -115,3 +115,15 @@
     border: 0;
   }
 }
+
+.chat_group_form__errors{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  border: solid 1px #ddd;
+  h2{
+    color: red;
+  }
+}
