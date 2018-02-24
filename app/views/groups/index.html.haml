@@ -8,29 +8,5 @@
       = link_to edit_user_path, :class => "chat-side__user-edit-user" do
         %i.fa.fa-cog
   .chat-side__groups
-    = render partial: "chat-side__groups"
-
-.chat-main
-  .chat-main__header
-    .chat-main__header-group.clearfix
-      .chat-main__header-group-name
-        開いているグループ名
-      = link_to '/', { :class => 'chat-main__header--group-edit-btn'} do
-        edit
-    .chat-main__header-members
-      MEMBER:
-      %i
-        メンバー名
-  .chat-main__body
-    = render partial: "messages-list"
-
-  .chat-main__footer
-    / = form_for [@group, @message] , html:{ class: 'chat-main__footer-form'} do |f|
-    /   .chat-main__footer-body
-    /     = f.text_field :body, class: 'message', placeholder: "type a message"
-    /     = f.label :image, class: 'chat-file' do
-    /       = f.file_field :image, class: 'image'
-    /       %i.fa.fa-image
-    /   = f.submit 'Send' ,class: 'submit'
-
+    = render partial: "shared/chat-side__groups"
 
