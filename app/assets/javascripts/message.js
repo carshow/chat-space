@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-    var html =`<div class ='chat-main__message clearfix'>
+    var text =`<div class ='chat-main__message clearfix'>
                   <div class="chat-main__message-name">
                     ${message.user_name}
                   </div>
@@ -10,19 +10,22 @@ $(function(){
                   <div class="chat-main__message-body">
                     ${message.body}</div></div>`
     var img = `<img class="chat-main__message-body-image", src="${message.image}">`
-    if(message.image == null) {
-      return html;
-    } else {
-      return html + img;
-    }
+    var html = (message.image == null) ? text : text + img;
+    return html;
+  }
+
+  function resetForm(){
+    $(".submit").prop('disabled', false);
+    $("#new_message")[0].reset();
   }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var href = window.location.href
+    console.log(this);
+    var url = $(this).attr("action");
     $.ajax({
-      url: href,
+      url: url,
       type: 'POST',
       data: formData,
       dataType: 'json',
@@ -33,13 +36,11 @@ $(function(){
       var html = buildHTML(data);
       $('.chat-main__body--messages-list').append(html);
       $('#message').val("");
-      $(".submit").prop('disabled', false);
-      $("#new_message")[0].reset();
+      resetForm();
       $(".chat-main__body").animate({scrollTop:$(".chat-main__body--messages-list")[0].scrollHeight});
       })
     .fail(function(){
-      $(".submit").prop('disabled', false);
-      $("#new_message")[0].reset();
+      resetForm();
       alert('メッセージを入力してください。');
     })
   });
