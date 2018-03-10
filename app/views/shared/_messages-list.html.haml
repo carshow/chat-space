@@ -9,5 +9,5 @@
       .chat-main__message-body
         - if message.body.present?
           = message.body
-        - if message.image.present?
-          = image_tag message.image, :class => 'chat-main__message-body-image'
+    - if message.image.present?
+      = image_tag message.image, :class => 'chat-main__message-body-image'
