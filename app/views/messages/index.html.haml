@@ -14,20 +14,23 @@
   .chat-main__header
     .chat-main__header-group.clearfix
       .chat-main__header-group-name
-        開いているグループ名
+        = @group.name
       = link_to edit_group_path(@group), { :class => 'chat-main__header--group-edit-btn'} do
         edit
     .chat-main__header-members
-      MEMBER:
-      %i
-        メンバー名
+      %spam MEMBER:
+      = @users.length
+      %i 人 :
+      - @users.each do |user|
+        %i
+        = user.name
   .chat-main__body
     = render partial: "shared/messages-list"
 
   .chat-main__footer
-    = form_for [@group, @message] , html:{ class: 'chat-main__footer-form'} do |f|
+    = form_for [@group, @message] , html:{ class: 'chat-main__footer-form', id: 'new-comment'} do |f|
       .chat-main__footer-body
-        = f.text_field :body, class: 'message', placeholder: "type a message"
+        = f.text_field :body, class: 'message', id: 'message', placeholder: "type a message"
         = f.label :image, class: 'chat-file' do
           = f.file_field :image, class: 'image'
           %i.fa.fa-image
