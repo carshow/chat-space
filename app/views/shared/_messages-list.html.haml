@@ -5,9 +5,9 @@
       .chat-main__message-name
         = message.user.name
       .chat-main__message-time
-        = message.created_at
+        = message.created_at.in_time_zone("Tokyo").strftime('%Y年%m月%d日 %H:%M:%S')
       .chat-main__message-body
         - if message.body.present?
           = message.body
-        - if message.image.present?
-          = image_tag message.image, :class => 'chat-main__message-body-image'
+    - if message.image.present?
+      = image_tag message.image, class: 'chat-main__message-body-image'
