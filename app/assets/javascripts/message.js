@@ -37,7 +37,7 @@ $(function(){
       $('.chat-main__body--messages-list').append(html);
       $('#message').val("");
       resetForm();
-      $(".chat-main__body").animate({scrollTop:$(".chat-main__body--messages-list")[0].scrollHeight});
+      $("html, body, .chat-main__body").animate({scrollTop:$(".chat-main__body--messages-list")[0].scrollHeight});
       })
     .fail(function(){
       resetForm();
