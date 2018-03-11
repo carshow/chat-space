@@ -1,6 +1,7 @@
 $(function(){
+  // function of creating messages in using ajax
   function buildHTML(message){
-    var text =`<div class ='chat-main__message clearfix'>
+    var text =`<div class ='chat-main__message clearfix',data-id: ${message.id}>
                   <div class="chat-main__message-name">
                     ${message.user_name}
                   </div>
@@ -43,4 +44,28 @@ $(function(){
       alert('メッセージを入力してください。');
     })
   });
+  // function of creating messages in using ajax
+
+  // auto reloading messages
+
+  setInterval(function() {
+    var last_message_id = $('.chat-main__message:last').data('id');
+    $.ajax({
+      url: location.href,
+      type: "GET",
+      dataType: "json"
+    })
+    .done(function(data) {
+      var insertHTML = '';
+      data.forEach(function(message) {
+        if (message.id > last_message_id){
+          insertHTML += buildHTML(message);
+        }
+      });
+      $('.chat-main__body--messages-list').append(insertHTML);
+    })
+    .fail(function(data) {
+      alert('自動更新に失敗しました');
+    })}, 5000);
+    // auto reloading messages
 });
