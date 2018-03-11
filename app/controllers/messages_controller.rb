@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to group_messages_path(@group) }
         format.json
       else
-        format.html { render :index}
+        format.html { render :index }
       end
     end
 
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body, :image, :created_at).merge(user_id: current_user.id)
+    params.require(:message).permit(:body, :image).merge(user_id: current_user.id)
   end
 
   def set_group

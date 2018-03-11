@@ -28,7 +28,7 @@
     = render partial: "shared/messages-list"
 
   .chat-main__footer
-    = form_for [@group, @message] , html:{ class: 'chat-main__footer-form', id: 'new-comment'} do |f|
+    = form_for [@group, @message] do |f|
       .chat-main__footer-body
         = f.text_field :body, class: 'message', id: 'message', placeholder: "type a message"
         = f.label :image, class: 'chat-file' do
