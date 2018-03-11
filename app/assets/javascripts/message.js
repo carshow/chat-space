@@ -51,8 +51,8 @@ $(function(){
   var autoReload = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       var last_message_id = $('.chat-main__message:last').data('id');
-        if( isNaN(last_message_id) ){
-          last_message_id = 0;
+      if( isNaN(last_message_id) ){
+        last_message_id = 0;
         }
       $.ajax({
         url: location.href,
@@ -61,7 +61,6 @@ $(function(){
       })
       .done(function(data) {
         var insertHTML = '';
-        console.log(last_message_id);
         data.forEach(function(message) {
           if ( message.id > last_message_id ){
             insertHTML += buildHTML(message);
