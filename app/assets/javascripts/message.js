@@ -50,25 +50,28 @@ $(function(){
 
   var autoReload = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    var last_message_id = $('.chat-main__message:last').data('id');
-    $.ajax({
-      url: location.href,
-      type: "GET",
-      dataType: "json"
-    })
-    .done(function(data) {
-      var insertHTML = '';
-      console.log(last_message_id);
-      data.forEach(function(message) {
-        if ( message.id > last_message_id ){
-          insertHTML += buildHTML(message);
+      var last_message_id = $('.chat-main__message:last').data('id');
+        if( isNaN(last_message_id) ){
+          last_message_id = 0;
         }
+      $.ajax({
+        url: location.href,
+        type: "GET",
+        dataType: "json"
+      })
+      .done(function(data) {
+        var insertHTML = '';
+        console.log(last_message_id);
+        data.forEach(function(message) {
+          if ( message.id > last_message_id ){
+            insertHTML += buildHTML(message);
+          }
+        });
+        $('.chat-main__body--messages-list').append(insertHTML);
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました');
       });
-      $('.chat-main__body--messages-list').append(insertHTML);
-    })
-    .fail(function(data) {
-      alert('自動更新に失敗しました');
-    });
     } else {
       clearInterval(autoReload);
      }}, 5000);
