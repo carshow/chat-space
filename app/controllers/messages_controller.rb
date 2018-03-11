@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to group_messages_path(@group) }
         format.json
       else
-        format.html { render :index}
+        format.html { render :index }
       end
     end
 
