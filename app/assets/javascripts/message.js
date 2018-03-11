@@ -1,7 +1,7 @@
 $(function(){
   // function of creating messages in using ajax
   function buildHTML(message){
-    var text =`<div class ='chat-main__message clearfix',data-id: ${message.id}>
+    var text =`<div class ='chat-main__message clearfix' data-id= "${message.id}"">
                   <div class="chat-main__message-name">
                     ${message.user_name}
                   </div>
@@ -48,7 +48,8 @@ $(function(){
 
   // auto reloading messages
 
-  setInterval(function() {
+  var autoReload = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
     var last_message_id = $('.chat-main__message:last').data('id');
     $.ajax({
       url: location.href,
@@ -57,8 +58,9 @@ $(function(){
     })
     .done(function(data) {
       var insertHTML = '';
+      console.log(last_message_id);
       data.forEach(function(message) {
-        if (message.id > last_message_id){
+        if ( message.id > last_message_id ){
           insertHTML += buildHTML(message);
         }
       });
@@ -66,6 +68,9 @@ $(function(){
     })
     .fail(function(data) {
       alert('自動更新に失敗しました');
-    })}, 5000);
+    });
+    } else {
+      clearInterval(autoReload);
+     }}, 5000);
     // auto reloading messages
 });
