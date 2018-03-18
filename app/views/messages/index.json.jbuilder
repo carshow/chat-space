@@ -1,5 +1,5 @@
-  if @new_message.present?
-    json.array! @new_message.each do |message|
+  if @new_messages.present?
+    json.array! @new_messages.each do |message|
       json.user_name message.user.name
       json.created_at message.created_at.in_time_zone("Tokyo").strftime('%Y年%m月%d日 %H:%M:%S')
       json.body     message.body
