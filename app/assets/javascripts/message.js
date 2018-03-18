@@ -57,14 +57,16 @@ $(function(){
       $.ajax({
         url: location.href,
         type: "GET",
-        dataType: "json"
+        dataType: "json",
+        data: {
+          message: { id: last_message_id }
+        }
       })
       .done(function(data) {
         var insertHTML = '';
+        console.log(data);
         data.forEach(function(message) {
-          if ( message.id > last_message_id ){
             insertHTML += buildHTML(message);
-          }
         });
         $('.chat-main__body--messages-list').append(insertHTML);
       })
