@@ -1,7 +1,6 @@
 .chat-main__body--messages-list
-  /チャットメッセージ仮置きここから
   - @messages.each do |message|
-    %div{ :class => 'chat-main__message clearfix'}
+    .chat-main__message.clearfix{data: { id: message.id } }
       .chat-main__message-name
         = message.user.name
       .chat-main__message-time
